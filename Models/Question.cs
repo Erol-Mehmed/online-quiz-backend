@@ -2,5 +2,17 @@ namespace OnlineQuizSystem.Models;
 
 public class Question
 {
+  public int Id { get; set; }
   
+  public int CategoryId { get; set; }
+  public Category? Category { get; set; }
+
+  public int CorrectAnswerId { get; set; }
+  public Answer? CorrectAnswer { get; set; }
+
+  public required string Text { get; set; }
+  public required List<Answer> Answers { get; set; }
+  
+  public DateTime CreatedAt { get; set; }
+  public DateTime? UpdatedAt { get; set; }
 }
