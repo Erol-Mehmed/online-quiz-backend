@@ -13,7 +13,9 @@ public class Quiz
   public required string Title { get; set; }
   [MaxLength(250)]
   public required string Description { get; set; }
-  public List<UserAnswer>? UserAnswers { get; set; }
+
+  public List<UserAnswer> UserAnswers { get; set; } = new();
+  public List<Result> Results { get; set; } = new();
 
   public DateTime CreatedAt { get; set; }
   public DateTime? UpdatedAt { get; set; }
