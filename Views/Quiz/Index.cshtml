@@ -1,0 +1,12 @@
+@{
+  ViewData["Title"] = "Quizzes";
+}
+
+<h1>Quizzes</h1>
+
+<ul>
+  @foreach (var quiz in Model)
+  {
+    <li>@quiz.Title</li>
+  }
+</ul>
