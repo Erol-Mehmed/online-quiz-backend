@@ -16,6 +16,6 @@ public class Question
   public required string Text { get; set; }
   public List<Answer> Answers { get; set; } = new();
   
-  public DateTime CreatedAt { get; set; }
+  public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
   public DateTime? UpdatedAt { get; set; }
 }

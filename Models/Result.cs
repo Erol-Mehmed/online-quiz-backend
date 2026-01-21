@@ -16,5 +16,5 @@ public class Result
   public List<UserAnswer> UserAnswers { get; set; } = new();
   
   public int Score { get; set; }
-  public DateTime CompletedAt { get; set; }
+  public DateTime CompletedAt { get; set; } = DateTime.UtcNow;
 }

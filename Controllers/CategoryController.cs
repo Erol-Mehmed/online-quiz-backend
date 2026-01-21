@@ -36,13 +36,11 @@ public class CategoryController : Controller
       {
         return BadRequest(ModelState);
       }
-      
+
       _context.Categories.Add(category);
       _context.SaveChanges();
-      
-      Console.WriteLine("Category created successfully");
-      
-      // return RedirectToAction(nameof(Index));
+
+      return CreatedAtAction(nameof(Index), category);
     }
     catch (Exception error)
     {

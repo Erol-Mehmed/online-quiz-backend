@@ -10,6 +10,6 @@ public class Category
   public required string Name { get; set; }
   public List<Question> Questions { get; set; } = new();
   
-  public DateTime CreatedAt { get; set; }
+  public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
   public DateTime? UpdatedAt { get; set; }
 }
