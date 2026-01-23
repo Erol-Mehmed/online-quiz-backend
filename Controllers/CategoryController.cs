@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using OnlineQuizSystem.Data;
 using OnlineQuizSystem.Models;
 
@@ -12,12 +14,14 @@ public class CategoryController : Controller
   {
     _context = context;
   }
-
-  public IActionResult Index()
+  
+  public async Task<IActionResult> Index()
   {
-    var categories = _context.Categories.ToList();
+    var categories = await _context.Categories.ToListAsync();
     
-    return View(categories);
+    return Ok(categories);
+
+    // return View(categories);
   }
 
   public IActionResult Create()
@@ -28,7 +32,7 @@ public class CategoryController : Controller
   // Temporarily removed
   // [ValidateAntiForgeryToken]
   [HttpPost]
-  public IActionResult Create([FromBody] Category category)
+  public async Task<IActionResult> Create([FromBody] Category category)
   {
     try
     {
@@ -38,7 +42,7 @@ public class CategoryController : Controller
       }
 
       _context.Categories.Add(category);
-      _context.SaveChanges();
+      await _context.SaveChangesAsync();
 
       return CreatedAtAction(nameof(Index), category);
     }

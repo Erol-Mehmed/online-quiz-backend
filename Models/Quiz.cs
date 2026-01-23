@@ -9,9 +9,9 @@ public class Quiz
   public int CategoryId { get; set; }
   public Category? Category { get; set; }
   
-  [MaxLength(250)]
+  [MaxLength(150)]
   public required string Title { get; set; }
-  [MaxLength(250)]
+  [MaxLength(1000)]
   public required string Description { get; set; }
 
   public List<UserAnswer> UserAnswers { get; set; } = new();

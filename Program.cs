@@ -15,6 +15,11 @@ string dbPassword = Environment.GetEnvironmentVariable("DB_PASSWORD") ?? "";
 
 string connectionString = $"Server={dbHost},{dbPort};Database={dbName};User Id={dbUser};Password={dbPassword};TrustServerCertificate=True;";
 
+builder.Services.AddRouting(options =>
+{
+  options.LowercaseUrls = true;
+});
+
 // EF Core + SQL Server
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
   options.UseSqlServer(connectionString)

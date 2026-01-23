@@ -6,7 +6,7 @@ public class Category
 {
   public int Id { get; set; }
 
-  [MaxLength(250)]
+  [MaxLength(100)]
   public required string Name { get; set; }
   public List<Question> Questions { get; set; } = new();
   

@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Razor.Compilation;
+using Microsoft.EntityFrameworkCore;
 using OnlineQuizSystem.Data;
 
 namespace OnlineQuizSystem.Controllers;
 
+[Authorize]
 public class QuizController : Controller
 {
   private readonly ApplicationDbContext _context;
@@ -13,9 +15,9 @@ public class QuizController : Controller
     _context = context;
   }
 
-  public IActionResult Index()
+  public async Task<IActionResult> Index()
   {
-    var quizzes = _context.Quizzes.ToList();
+    var quizzes = await _context.Quizzes.ToListAsync();
     
     return View(quizzes);
   }
