@@ -1,0 +1,66 @@
+# =========================================
+# Global settings
+# =========================================
+* text=auto eol=lf
+
+# =========================================
+# C# / .NET
+# =========================================
+*.cs        text eol=lf
+*.csproj   text eol=lf
+*.sln      text eol=lf
+*.props    text eol=lf
+*.targets  text eol=lf
+
+# =========================================
+# Razor / MVC
+# =========================================
+*.cshtml   text eol=lf
+*.razor    text eol=lf
+*.view     text eol=lf
+
+# =========================================
+# Config files
+# =========================================
+*.json     text eol=lf
+*.yml      text eol=lf
+*.yaml     text eol=lf
+*.xml      text eol=lf
+*.config   text eol=lf
+*.env      text eol=lf
+
+# =========================================
+# Web assets
+# =========================================
+*.js       text eol=lf
+*.ts       text eol=lf
+*.css      text eol=lf
+*.scss     text eol=lf
+*.html     text eol=lf
+
+# =========================================
+# Shell / Docker
+# =========================================
+*.sh       text eol=lf
+Dockerfile text eol=lf
+*.dockerfile text eol=lf
+
+# =========================================
+# Markdown / docs
+# =========================================
+*.md       text eol=lf
+*.txt      text eol=lf
+
+# =========================================
+# Binary files (never touch line endings)
+# =========================================
+*.png      binary
+*.jpg      binary
+*.jpeg     binary
+*.gif      binary
+*.ico      binary
+*.svg      binary
+*.pdf      binary
+*.zip      binary
+*.exe      binary
+*.dll      binary

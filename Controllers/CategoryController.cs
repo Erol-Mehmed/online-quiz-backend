@@ -29,7 +29,6 @@ public class CategoryController : Controller
     return View();
   }
 
-  // Temporarily removed
   // [ValidateAntiForgeryToken]
   [HttpPost]
   public async Task<IActionResult> Create([FromBody] Category category)
@@ -49,9 +48,8 @@ public class CategoryController : Controller
     catch (Exception error)
     {
       Console.WriteLine(error);
+      
+      return BadRequest(error);
     }
-
-    return Empty;
-    // return View(category);
   }
 }

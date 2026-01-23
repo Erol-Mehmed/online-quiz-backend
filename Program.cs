@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using OnlineQuizSystem.Data;
 using OnlineQuizSystem.Models;
@@ -7,32 +6,38 @@ DotNetEnv.Env.Load();
 
 var builder = WebApplication.CreateBuilder(args);
 
+// ENV vars
 string dbHost = Environment.GetEnvironmentVariable("DB_HOST") ?? "";
 string dbPort = Environment.GetEnvironmentVariable("DB_PORT") ?? "";
 string dbName = Environment.GetEnvironmentVariable("DB_NAME") ?? "";
 string dbUser = Environment.GetEnvironmentVariable("DB_USER") ?? "";
 string dbPassword = Environment.GetEnvironmentVariable("DB_PASSWORD") ?? "";
 
-string connectionString = $"Server={dbHost},{dbPort};Database={dbName};User Id={dbUser};Password={dbPassword};TrustServerCertificate=True;";
+string connectionString =
+  $"Server={dbHost},{dbPort};Database={dbName};User Id={dbUser};Password={dbPassword};TrustServerCertificate=True;";
 
+// Routing
 builder.Services.AddRouting(options =>
 {
   options.LowercaseUrls = true;
 });
 
-// EF Core + SQL Server
+// EF Core
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
   options.UseSqlServer(connectionString)
 );
 
 // Identity
 builder.Services
-  .AddIdentity<ApplicationUser, IdentityRole>()
-  .AddEntityFrameworkStores<ApplicationDbContext>()
-  .AddDefaultTokenProviders();
+  .AddDefaultIdentity<ApplicationUser>(options =>
+  {
+    options.SignIn.RequireConfirmedAccount = true;
+  })
+  .AddEntityFrameworkStores<ApplicationDbContext>();
 
-// MVC
+// MVC + Razor Pages
 builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
@@ -44,13 +49,17 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
 app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
 
+// MVC routes
 app.MapControllerRoute(
   name: "default",
   pattern: "{controller=Quiz}/{action=Index}/{id?}");
+
+app.MapRazorPages();
 
 app.Run();
