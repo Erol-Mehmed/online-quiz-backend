@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using OnlineQuizSystem.Data;
 using OnlineQuizSystem.Models;
+using Microsoft.AspNetCore.Identity;
 
 DotNetEnv.Env.Load();
 
@@ -29,11 +30,12 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 // Identity
 builder.Services
-  .AddDefaultIdentity<ApplicationUser>(options =>
+  .AddIdentity<ApplicationUser, IdentityRole>(options =>
   {
     options.SignIn.RequireConfirmedAccount = true;
   })
-  .AddEntityFrameworkStores<ApplicationDbContext>();
+  .AddEntityFrameworkStores<ApplicationDbContext>()
+  .AddDefaultTokenProviders();
 
 // MVC + Razor Pages
 builder.Services.AddControllersWithViews();
@@ -61,5 +63,7 @@ app.MapControllerRoute(
   pattern: "{controller=Quiz}/{action=Index}/{id?}");
 
 app.MapRazorPages();
+
+await DbSeeder.SeedAsync(app.Services);
 
 app.Run();
