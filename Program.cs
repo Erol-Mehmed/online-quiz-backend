@@ -32,10 +32,26 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services
   .AddIdentity<ApplicationUser, IdentityRole>(options =>
   {
-    options.SignIn.RequireConfirmedAccount = true;
+    options.SignIn.RequireConfirmedAccount = false;
+
+    options.Password.RequireDigit = true;
+    options.Password.RequireUppercase = false;
+    options.Password.RequireLowercase = true;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequiredLength = 6;
   })
   .AddEntityFrameworkStores<ApplicationDbContext>()
   .AddDefaultTokenProviders();
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+  options.LoginPath = "/Identity/Account/Login";
+  options.LogoutPath = "/Identity/Account/Logout";
+  options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+
+  options.ExpireTimeSpan = TimeSpan.FromDays(7);
+  options.SlidingExpiration = true;
+});
 
 // MVC + Razor Pages
 builder.Services.AddControllersWithViews();
