@@ -5,13 +5,15 @@
 
 <h2>Categories</h2>
 
-<a asp-action="Create" class="btn btn-primary">Create</a>
-
-<table class="table">
+<ul>
   @foreach (var c in Model)
   {
-    <tr>
-      <td>@c.Name</td>
-    </tr>
+    <li>
+      <a asp-controller="Quiz"
+         asp-action="Index"
+         asp-route-categoryId="@c.Id">
+        @c.Name
+      </a>
+    </li>
   }
-</table>
+</ul>

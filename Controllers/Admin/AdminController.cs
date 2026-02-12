@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OnlineQuizSystem.Data;
 
-namespace OnlineQuizSystem.Controllers;
+namespace OnlineQuizSystem.Controllers.Admin;
 
 [Authorize(Roles = "Admin")]
 public class AdminController : Controller

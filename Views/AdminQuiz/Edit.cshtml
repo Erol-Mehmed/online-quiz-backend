@@ -1,0 +1,11 @@
+@model Quiz
+
+<h2>Edit Quiz</h2>
+
+<form asp-action="Edit" method="post">
+  <partial name="_QuizForm" model="Model" />
+</form>
+
+@section Scripts {
+  <partial name="_ValidationScriptsPartial" />
+}

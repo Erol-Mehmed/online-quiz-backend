@@ -1,0 +1,23 @@
+@model IEnumerable<Quiz>
+
+<h2>Manage Quizzes</h2>
+
+<a asp-action="Create" class="btn btn-primary mb-2">Create Quiz</a>
+
+<table class="table">
+  <tr>
+    <th>Title</th>
+    <th></th>
+  </tr>
+
+  @foreach (var quiz in Model)
+  {
+    <tr>
+      <td>@quiz.Title</td>
+      <td>
+        <a asp-action="Edit" asp-route-id="@quiz.Id">Edit</a> |
+        <a asp-action="Delete" asp-route-id="@quiz.Id">Delete</a>
+      </td>
+    </tr>
+  }
+</table>
