@@ -23,9 +23,16 @@ public class QuizController : Controller
     return View(quizzes);
   }
   
-  // [ValidateAntiForgeryToken]
+  [Authorize(Roles = "Admin")]
+  public IActionResult Create()
+  {
+    return View();
+  }
+  
+  [Authorize(Roles = "Admin")]
   [HttpPost]
-  public async Task<IActionResult> Create([FromBody] Quiz quiz)
+  [ValidateAntiForgeryToken]
+  public async Task<IActionResult> Create(Quiz quiz)
   {
     try
     {

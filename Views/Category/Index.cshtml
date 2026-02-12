@@ -1,0 +1,17 @@
+@model IEnumerable<Category>
+@{
+  ViewData["Title"] = "Categories";
+}
+
+<h2>Categories</h2>
+
+<a asp-action="Create" class="btn btn-primary">Create</a>
+
+<table class="table">
+  @foreach (var c in Model)
+  {
+    <tr>
+      <td>@c.Name</td>
+    </tr>
+  }
+</table>

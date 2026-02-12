@@ -6,6 +6,7 @@ using OnlineQuizSystem.Models;
 
 namespace OnlineQuizSystem.Controllers;
 
+[Authorize(Roles = "Admin")]
 public class CategoryController : Controller
 {
   private readonly ApplicationDbContext _context;
@@ -18,20 +19,18 @@ public class CategoryController : Controller
   public async Task<IActionResult> Index()
   {
     var categories = await _context.Categories.ToListAsync();
-    
-    return Ok(categories);
 
-    // return View(categories);
+    return View(categories);
   }
 
   public IActionResult Create()
   {
     return View();
   }
-
-  // [ValidateAntiForgeryToken]
+  
   [HttpPost]
-  public async Task<IActionResult> Create([FromBody] Category category)
+  [ValidateAntiForgeryToken]
+  public async Task<IActionResult> Create(Category category)
   {
     try
     {
