@@ -1,11 +1,13 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using OnlineQuizSystem.Data;
 using OnlineQuizSystem.Models;
 
 namespace OnlineQuizSystem.Controllers.Admin;
 
 [Authorize(Roles = "Admin")]
+[Route("admin/categories")]
 public class AdminCategoryController : Controller
 {
   private readonly ApplicationDbContext _context;
@@ -14,11 +16,13 @@ public class AdminCategoryController : Controller
   {
     _context = context;
   }
-  
+
   [HttpGet("")]
-  public IActionResult Index()
+  public async Task<IActionResult> Index()
   {
-    return View();
+    var categories = await _context.Categories.ToListAsync();
+    
+    return View(categories);
   }
   
   // Create ----------------------------------------

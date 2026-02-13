@@ -1,11 +1,13 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using OnlineQuizSystem.Models;
 using OnlineQuizSystem.Data;
 
 namespace OnlineQuizSystem.Controllers.Admin;
 
 [Authorize(Roles = "Admin")]
+[Route("admin/quizzes")]
 public class AdminQuizController : Controller
 {
   private readonly ApplicationDbContext _context;
@@ -14,11 +16,13 @@ public class AdminQuizController : Controller
   {
     _context = context;
   }
-  
+
   [HttpGet("")]
-  public IActionResult Index()
+  public async Task<IActionResult> Index()
   {
-    return View();
+    var quizzes = await _context.Quizzes.ToListAsync();
+    
+    return View(quizzes);
   }
 
   // Create -----------------------------------------
