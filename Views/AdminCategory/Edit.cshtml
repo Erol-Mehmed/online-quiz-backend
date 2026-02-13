@@ -1,8 +1,15 @@
 @model Category
+@{
+  ViewData["Title"] = "Edit Category";
+}
 
 <h2>Edit Category</h2>
 
 <form asp-action="Edit" method="post">
-  <input asp-for="Name" class="form-control" />
-  <button type="submit" class="btn btn-primary">Save</button>
+  <partial name="_CategoryForm" model="Model" />
+  <input type="hidden" asp-for="Id" />
 </form>
+
+@section Scripts {
+  <partial name="_ValidationScriptsPartial" />
+}

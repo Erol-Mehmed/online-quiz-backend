@@ -26,12 +26,13 @@ public class AdminQuizController : Controller
   }
 
   // Create -----------------------------------------
+  [HttpGet("create")]
   public IActionResult Create()
   {
     return View();
   }
   
-  [HttpPost]
+  [HttpPost("create")]
   [ValidateAntiForgeryToken]
   public async Task<IActionResult> Create(Quiz quiz)
   {
@@ -45,6 +46,7 @@ public class AdminQuizController : Controller
   }
   
   // Edit ------------------------------------------
+  [HttpGet("edit/{id}")]
   public async Task<IActionResult> Edit(int id)
   {
     var quiz = await _context.Quizzes.FindAsync(id);
@@ -53,7 +55,7 @@ public class AdminQuizController : Controller
     return View(quiz);
   }
 
-  [HttpPost]
+  [HttpPost("edit/{id}")]
   [ValidateAntiForgeryToken]
   public async Task<IActionResult> Edit(int id, Quiz quiz)
   {
@@ -69,6 +71,8 @@ public class AdminQuizController : Controller
   }
   
   // Delete ---------------------------------------
+  [HttpPost]
+  [ValidateAntiForgeryToken]
   public async Task<IActionResult> Delete(int id)
   {
     var quiz = await _context.Quizzes.FindAsync(id);

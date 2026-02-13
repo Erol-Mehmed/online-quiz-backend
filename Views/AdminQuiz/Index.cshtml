@@ -5,7 +5,9 @@
 
 <h2>Manage Quizzes</h2>
 
-<a asp-action="Create" class="btn btn-primary mb-2">Create Quiz</a>
+<a asp-controller="AdminQuiz" asp-action="Create" class="btn btn-primary mb-2">
+  Create Quiz
+</a>
 
 <table class="table">
   <tr>
@@ -19,7 +21,10 @@
       <td>@quiz.Title</td>
       <td>
         <a asp-action="Edit" asp-route-id="@quiz.Id">Edit</a> |
-        <a asp-action="Delete" asp-route-id="@quiz.Id">Delete</a>
+        <button class="btn btn-sm btn-danger"
+                onclick="openDeleteModal('@Url.Action("Delete","AdminQuiz")', @quiz.Id, '@quiz.Title')">
+          Delete
+        </button>
       </td>
     </tr>
   }

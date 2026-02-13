@@ -1,9 +1,13 @@
 @model Quiz
+@{
+  ViewData["Title"] = "Edit Quizzes";
+}
 
 <h2>Edit Quiz</h2>
 
 <form asp-action="Edit" method="post">
   <partial name="_QuizForm" model="Model" />
+  <input type="hidden" asp-for="Id" />
 </form>
 
 @section Scripts {

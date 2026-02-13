@@ -26,12 +26,13 @@ public class AdminCategoryController : Controller
   }
   
   // Create ----------------------------------------
+  [HttpGet("create")]
   public IActionResult Create()
   {
     return View();
   }
   
-  [HttpPost]
+  [HttpPost("create")]
   [ValidateAntiForgeryToken]
   public async Task<IActionResult> Create(Category category)
   {
@@ -45,6 +46,7 @@ public class AdminCategoryController : Controller
   }
   
   // Edit ------------------------------------------
+  [HttpGet("edit/{id}")]
   public async Task<IActionResult> Edit(int id)
   {
     var category = await _context.Categories.FindAsync(id);
@@ -53,7 +55,7 @@ public class AdminCategoryController : Controller
     return View(category);
   }
 
-  [HttpPost]
+  [HttpPost("edit/{id}")]
   [ValidateAntiForgeryToken]
   public async Task<IActionResult> Edit(int id, Category category)
   {
@@ -69,6 +71,8 @@ public class AdminCategoryController : Controller
   }
 
   // Delete ----------------------------------------
+  [HttpPost]
+  [ValidateAntiForgeryToken]
   public async Task<IActionResult> Delete(int id)
   {
     var category = await _context.Categories.FindAsync(id);
