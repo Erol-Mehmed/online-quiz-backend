@@ -3,11 +3,13 @@
   ViewData["Title"] = "Quizzes";
 }
 
-<h1>Quizzes</h1>
+<h1 class="mb-5">Quizzes</h1>
 
-<ul>
+<ul class="list-unstyled">
   @foreach (var quiz in Model)
   {
-    <li>@quiz.Title</li>
+    <li class="mb-2 pt-2 pb-2 fs-5 border-bottom">
+      @quiz.Title
+    </li>
   }
 </ul>

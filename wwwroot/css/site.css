@@ -34,8 +34,18 @@ body {
   text-align: start;
 }
 
-.nav-link:focus,
-.nav-link:active {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-  border-radius: 0.375rem;
+.nav-link {
+  &:hover {
+    background: lightgray;
+  }
+  
+  &:focus,
+  &:active {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    border-radius: 0.375rem;
+  }
+}
+
+a {
+  text-decoration: none;
 }

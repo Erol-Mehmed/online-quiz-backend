@@ -20,7 +20,7 @@ public class AdminQuizController : Controller
   [HttpGet("")]
   public async Task<IActionResult> Index()
   {
-    var quizzes = await _context.Quizzes.ToListAsync();
+    var quizzes = await _context.Quizzes.Include(q => q.Category).ToListAsync();
     
     return View(quizzes);
   }
@@ -29,6 +29,8 @@ public class AdminQuizController : Controller
   [HttpGet("create")]
   public IActionResult Create()
   {
+    ViewBag.Categories = _context.Categories.ToList();
+    
     return View();
   }
   
@@ -37,7 +39,11 @@ public class AdminQuizController : Controller
   public async Task<IActionResult> Create(Quiz quiz)
   {
     if (!ModelState.IsValid)
+    {
+      ViewBag.Categories = _context.Categories.ToList();
+      
       return View(quiz);
+    }
 
     _context.Add(quiz);
     await _context.SaveChangesAsync();
@@ -51,6 +57,8 @@ public class AdminQuizController : Controller
   {
     var quiz = await _context.Quizzes.FindAsync(id);
     if (quiz == null) return NotFound();
+    
+    ViewBag.Categories = _context.Categories.ToList();
     
     return View(quiz);
   }
