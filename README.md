@@ -32,5 +32,7 @@ Online Quiz System is an ASP.NET Core MVC web application that allows users to b
 4. Run the application to seed initial data:
    dotnet run
 
-5. Open in browser:
+5. Admin email and password can be found or set in DbSeeder.cs
+
+6. Open in browser:
    http://localhost:xxxx
