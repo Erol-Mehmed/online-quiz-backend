@@ -24,7 +24,7 @@ Online Quiz System is an ASP.NET Core MVC web application that allows users to b
 1. Clone repository:
    git clone <repo-url>
 
-2. Configure database connection in .env
+2. Configure database connection in .env using .env-example
 
 3. Apply migrations:
    dotnet ef database update
