@@ -2,8 +2,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OnlineQuizSystem.Data;
 
-namespace OnlineQuizSystem.Controllers.Admin;
+namespace OnlineQuizSystem.Areas.Admin.Controllers;
 
+[Area("Admin")]
 [Authorize(Roles = "Admin")]
 public class AdminController : Controller
 {

@@ -21,6 +21,20 @@
     <ItemGroup>
       <_ContentIncludedByDefault Remove="Views\Home\Index.cshtml" />
       <_ContentIncludedByDefault Remove="Views\Home\Privacy.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Admin\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\AdminQuiz\Create.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\AdminQuiz\Edit.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\AdminQuiz\Index.cshtml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <AdditionalFiles Include="Areas\Admin\Views\AdminCategory\Create.cshtml" />
+      <AdditionalFiles Include="Areas\Admin\Views\AdminCategory\Edit.cshtml" />
+      <AdditionalFiles Include="Areas\Admin\Views\AdminCategory\Index.cshtml" />
+      <AdditionalFiles Include="Areas\Admin\Views\AdminQuiz\Create.cshtml" />
+      <AdditionalFiles Include="Areas\Admin\Views\AdminQuiz\Edit.cshtml" />
+      <AdditionalFiles Include="Areas\Admin\Views\AdminQuiz\Index.cshtml" />
+      <AdditionalFiles Include="Areas\Admin\Views\Admin\Index.cshtml" />
     </ItemGroup>
 
 </Project>

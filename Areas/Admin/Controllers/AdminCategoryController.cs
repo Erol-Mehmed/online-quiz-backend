@@ -4,8 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using OnlineQuizSystem.Data;
 using OnlineQuizSystem.Models;
 
-namespace OnlineQuizSystem.Controllers.Admin;
+namespace OnlineQuizSystem.Areas.Admin.Controllers;
 
+[Area("Admin")]
 [Authorize(Roles = "Admin")]
 [Route("admin/categories")]
 public class AdminCategoryController : Controller
