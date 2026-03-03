@@ -37,4 +37,9 @@
       <AdditionalFiles Include="Areas\Admin\Views\Admin\Index.cshtml" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Areas\User\Controllers\" />
+      <Folder Include="Areas\User\Views\" />
+    </ItemGroup>
+
 </Project>
