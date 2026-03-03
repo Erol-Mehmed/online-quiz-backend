@@ -5,7 +5,7 @@ using OnlineQuizSystem.Data;
 
 namespace OnlineQuizSystem.Controllers;
 
-[Authorize(Roles = "Admin")]
+[Authorize]
 public class QuizController : Controller
 {
   private readonly ApplicationDbContext _context;
