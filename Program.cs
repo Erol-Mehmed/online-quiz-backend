@@ -43,6 +43,19 @@ builder.Services
   .AddEntityFrameworkStores<ApplicationDbContext>()
   .AddDefaultTokenProviders();
 
+// CORS
+builder.Services.AddCors(options =>
+{
+  options.AddPolicy("frontend",
+    policy =>
+    {
+      policy.WithOrigins("http://localhost:3000")
+        .AllowAnyHeader()
+        .AllowAnyMethod()
+        .AllowCredentials();
+    });
+});
+
 builder.Services.AddControllers();
 
 var app = builder.Build();
@@ -57,6 +70,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseCors("frontend");
 
 app.UseAuthentication();
 app.UseAuthorization();

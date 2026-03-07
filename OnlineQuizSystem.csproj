@@ -57,7 +57,11 @@
 
     <ItemGroup>
       <Folder Include="Areas\User\Controllers\" />
-      <Folder Include="DTOs\" />
+      <Folder Include="Configurations\" />
+      <Folder Include="Mapping\" />
+      <Folder Include="Middleware\" />
+      <Folder Include="Models\DTOs\" />
+      <Folder Include="Repositories\" />
       <Folder Include="Services\" />
     </ItemGroup>
 
