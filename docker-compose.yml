@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   db:
     image: mcr.microsoft.com/mssql/server:2022-latest
@@ -12,7 +10,7 @@ services:
     volumes:
       - sqlserver-data:/var/opt/mssql
 
-  backend:
+  web:
     build: .
     container_name: onlinequiz-backend
     depends_on:
