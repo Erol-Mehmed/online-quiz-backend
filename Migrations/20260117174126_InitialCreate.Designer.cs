@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using OnlineQuizSystem.Data;
+using OnlineQuiz.Api.Data;
 
 #nullable disable
 
-namespace OnlineQuizSystem.Migrations
+namespace OnlineQuiz.Api.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20260117174126_InitialCreate")]
@@ -158,7 +158,7 @@ namespace OnlineQuizSystem.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("OnlineQuizSystem.Models.ApplicationUser", b =>
+            modelBuilder.Entity("OnlineQuiz.Api.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -246,7 +246,7 @@ namespace OnlineQuizSystem.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("OnlineQuizSystem.Models.ApplicationUser", null)
+                    b.HasOne("OnlineQuiz.Api.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -255,7 +255,7 @@ namespace OnlineQuizSystem.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("OnlineQuizSystem.Models.ApplicationUser", null)
+                    b.HasOne("OnlineQuiz.Api.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -270,7 +270,7 @@ namespace OnlineQuizSystem.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("OnlineQuizSystem.Models.ApplicationUser", null)
+                    b.HasOne("OnlineQuiz.Api.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -279,7 +279,7 @@ namespace OnlineQuizSystem.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("OnlineQuizSystem.Models.ApplicationUser", null)
+                    b.HasOne("OnlineQuiz.Api.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

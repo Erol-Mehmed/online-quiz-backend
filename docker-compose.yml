@@ -12,9 +12,9 @@ services:
     volumes:
       - sqlserver-data:/var/opt/mssql
 
-  web:
+  backend:
     build: .
-    container_name: onlinequiz
+    container_name: onlinequiz-backend
     depends_on:
       - db
     ports:

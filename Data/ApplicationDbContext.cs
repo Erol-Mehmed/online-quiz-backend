@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using OnlineQuizSystem.Models;
+using OnlineQuiz.Api.Models.Entities;
 
-namespace OnlineQuizSystem.Data;
+namespace OnlineQuiz.Api.Data;
 
 public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 {

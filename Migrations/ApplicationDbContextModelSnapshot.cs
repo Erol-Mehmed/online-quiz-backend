@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using OnlineQuizSystem.Data;
+using OnlineQuiz.Api.Data;
 
 #nullable disable
 
-namespace OnlineQuizSystem.Migrations
+namespace OnlineQuiz.Api.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -155,7 +155,7 @@ namespace OnlineQuizSystem.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("OnlineQuizSystem.Models.Answer", b =>
+            modelBuilder.Entity("OnlineQuiz.Api.Models.Answer", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -184,7 +184,7 @@ namespace OnlineQuizSystem.Migrations
                     b.ToTable("Answers");
                 });
 
-            modelBuilder.Entity("OnlineQuizSystem.Models.ApplicationUser", b =>
+            modelBuilder.Entity("OnlineQuiz.Api.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -263,7 +263,7 @@ namespace OnlineQuizSystem.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("OnlineQuizSystem.Models.Category", b =>
+            modelBuilder.Entity("OnlineQuiz.Api.Models.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -287,7 +287,7 @@ namespace OnlineQuizSystem.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("OnlineQuizSystem.Models.Question", b =>
+            modelBuilder.Entity("OnlineQuiz.Api.Models.Question", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -321,7 +321,7 @@ namespace OnlineQuizSystem.Migrations
                     b.ToTable("Questions");
                 });
 
-            modelBuilder.Entity("OnlineQuizSystem.Models.Quiz", b =>
+            modelBuilder.Entity("OnlineQuiz.Api.Models.Quiz", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -355,7 +355,7 @@ namespace OnlineQuizSystem.Migrations
                     b.ToTable("Quizzes");
                 });
 
-            modelBuilder.Entity("OnlineQuizSystem.Models.Result", b =>
+            modelBuilder.Entity("OnlineQuiz.Api.Models.Result", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -387,7 +387,7 @@ namespace OnlineQuizSystem.Migrations
                     b.ToTable("Results");
                 });
 
-            modelBuilder.Entity("OnlineQuizSystem.Models.UserAnswer", b =>
+            modelBuilder.Entity("OnlineQuiz.Api.Models.UserAnswer", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -431,7 +431,7 @@ namespace OnlineQuizSystem.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("OnlineQuizSystem.Models.ApplicationUser", null)
+                    b.HasOne("OnlineQuiz.Api.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -440,7 +440,7 @@ namespace OnlineQuizSystem.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("OnlineQuizSystem.Models.ApplicationUser", null)
+                    b.HasOne("OnlineQuiz.Api.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -455,7 +455,7 @@ namespace OnlineQuizSystem.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("OnlineQuizSystem.Models.ApplicationUser", null)
+                    b.HasOne("OnlineQuiz.Api.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -464,16 +464,16 @@ namespace OnlineQuizSystem.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("OnlineQuizSystem.Models.ApplicationUser", null)
+                    b.HasOne("OnlineQuiz.Api.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("OnlineQuizSystem.Models.Answer", b =>
+            modelBuilder.Entity("OnlineQuiz.Api.Models.Answer", b =>
                 {
-                    b.HasOne("OnlineQuizSystem.Models.Question", "Question")
+                    b.HasOne("OnlineQuiz.Api.Models.Question", "Question")
                         .WithMany("Answers")
                         .HasForeignKey("QuestionId")
                         .OnDelete(DeleteBehavior.NoAction)
@@ -482,15 +482,15 @@ namespace OnlineQuizSystem.Migrations
                     b.Navigation("Question");
                 });
 
-            modelBuilder.Entity("OnlineQuizSystem.Models.Question", b =>
+            modelBuilder.Entity("OnlineQuiz.Api.Models.Question", b =>
                 {
-                    b.HasOne("OnlineQuizSystem.Models.Category", "Category")
+                    b.HasOne("OnlineQuiz.Api.Models.Category", "Category")
                         .WithMany("Questions")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("OnlineQuizSystem.Models.Answer", "CorrectAnswer")
+                    b.HasOne("OnlineQuiz.Api.Models.Answer", "CorrectAnswer")
                         .WithMany()
                         .HasForeignKey("CorrectAnswerId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -501,9 +501,9 @@ namespace OnlineQuizSystem.Migrations
                     b.Navigation("CorrectAnswer");
                 });
 
-            modelBuilder.Entity("OnlineQuizSystem.Models.Quiz", b =>
+            modelBuilder.Entity("OnlineQuiz.Api.Models.Quiz", b =>
                 {
-                    b.HasOne("OnlineQuizSystem.Models.Category", "Category")
+                    b.HasOne("OnlineQuiz.Api.Models.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -512,15 +512,15 @@ namespace OnlineQuizSystem.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("OnlineQuizSystem.Models.Result", b =>
+            modelBuilder.Entity("OnlineQuiz.Api.Models.Result", b =>
                 {
-                    b.HasOne("OnlineQuizSystem.Models.Quiz", "Quiz")
+                    b.HasOne("OnlineQuiz.Api.Models.Quiz", "Quiz")
                         .WithMany("Results")
                         .HasForeignKey("QuizId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("OnlineQuizSystem.Models.ApplicationUser", "User")
+                    b.HasOne("OnlineQuiz.Api.Models.ApplicationUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.NoAction)
@@ -531,25 +531,25 @@ namespace OnlineQuizSystem.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("OnlineQuizSystem.Models.UserAnswer", b =>
+            modelBuilder.Entity("OnlineQuiz.Api.Models.UserAnswer", b =>
                 {
-                    b.HasOne("OnlineQuizSystem.Models.Question", "Question")
+                    b.HasOne("OnlineQuiz.Api.Models.Question", "Question")
                         .WithMany()
                         .HasForeignKey("QuestionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("OnlineQuizSystem.Models.Quiz", null)
+                    b.HasOne("OnlineQuiz.Api.Models.Quiz", null)
                         .WithMany("UserAnswers")
                         .HasForeignKey("QuizId");
 
-                    b.HasOne("OnlineQuizSystem.Models.Result", "Result")
+                    b.HasOne("OnlineQuiz.Api.Models.Result", "Result")
                         .WithMany("UserAnswers")
                         .HasForeignKey("ResultId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("OnlineQuizSystem.Models.Answer", "SelectedAnswer")
+                    b.HasOne("OnlineQuiz.Api.Models.Answer", "SelectedAnswer")
                         .WithMany()
                         .HasForeignKey("SelectedAnswerId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -562,24 +562,24 @@ namespace OnlineQuizSystem.Migrations
                     b.Navigation("SelectedAnswer");
                 });
 
-            modelBuilder.Entity("OnlineQuizSystem.Models.Category", b =>
+            modelBuilder.Entity("OnlineQuiz.Api.Models.Category", b =>
                 {
                     b.Navigation("Questions");
                 });
 
-            modelBuilder.Entity("OnlineQuizSystem.Models.Question", b =>
+            modelBuilder.Entity("OnlineQuiz.Api.Models.Question", b =>
                 {
                     b.Navigation("Answers");
                 });
 
-            modelBuilder.Entity("OnlineQuizSystem.Models.Quiz", b =>
+            modelBuilder.Entity("OnlineQuiz.Api.Models.Quiz", b =>
                 {
                     b.Navigation("Results");
 
                     b.Navigation("UserAnswers");
                 });
 
-            modelBuilder.Entity("OnlineQuizSystem.Models.Result", b =>
+            modelBuilder.Entity("OnlineQuiz.Api.Models.Result", b =>
                 {
                     b.Navigation("UserAnswers");
                 });

@@ -1,4 +1,4 @@
-namespace OnlineQuizSystem.Models;
+namespace OnlineQuiz.Api.Models.Entities;
 
 public class UserAnswer
 {

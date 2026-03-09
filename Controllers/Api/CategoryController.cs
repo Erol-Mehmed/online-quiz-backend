@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using OnlineQuizSystem.Data;
+using OnlineQuiz.Api.Data;
 
-namespace OnlineQuizSystem.Controllers;
+namespace OnlineQuiz.Api.Controllers;
 
 public class CategoryController : Controller
 {

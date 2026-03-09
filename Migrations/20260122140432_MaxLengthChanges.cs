@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace OnlineQuizSystem.Migrations
+namespace OnlineQuiz.Api.Migrations
 {
     /// <inheritdoc />
     public partial class MaxLengthChanges : Migration

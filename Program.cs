@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using OnlineQuizSystem.Data;
-using OnlineQuizSystem.Models;
+using OnlineQuiz.Api.Data;
+using OnlineQuiz.Api.Models.Entities;
 using Microsoft.AspNetCore.Identity;
 
 DotNetEnv.Env.Load();

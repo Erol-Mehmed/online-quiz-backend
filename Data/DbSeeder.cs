@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Identity;
-using OnlineQuizSystem.Models;
+using OnlineQuiz.Api.Models.Entities;
 
-namespace OnlineQuizSystem.Data;
+namespace OnlineQuiz.Api.Data;
 
 public static class DbSeeder
 {
