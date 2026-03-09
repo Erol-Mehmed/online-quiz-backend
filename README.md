@@ -36,3 +36,7 @@ Online Quiz System is an ASP.NET Core MVC web application that allows users to b
 
 6. Open in browser:
    http://localhost:xxxx
+
+## Frontend
+The frontend for this project is a Next.js app.  
+Repository: [online-quiz-frontend](https://github.com/Erol-Mehmed/online-quiz-frontend)
