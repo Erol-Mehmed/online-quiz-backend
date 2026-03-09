@@ -43,19 +43,20 @@ builder.Services
   .AddEntityFrameworkStores<ApplicationDbContext>()
   .AddDefaultTokenProviders();
 
-builder.Services.ConfigureApplicationCookie(options =>
+// CORS
+builder.Services.AddCors(options =>
 {
-  options.LoginPath = "/Identity/Account/Login";
-  options.LogoutPath = "/Identity/Account/Logout";
-  options.AccessDeniedPath = "/Identity/Account/AccessDenied";
-
-  options.ExpireTimeSpan = TimeSpan.FromDays(7);
-  options.SlidingExpiration = true;
+  options.AddPolicy("frontend",
+    policy =>
+    {
+      policy.WithOrigins("http://localhost:3000")
+        .AllowAnyHeader()
+        .AllowAnyMethod()
+        .AllowCredentials();
+    });
 });
 
-// MVC + Razor Pages
-builder.Services.AddControllersWithViews();
-builder.Services.AddRazorPages();
+builder.Services.AddControllers();
 
 var app = builder.Build();
 
@@ -70,15 +71,12 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseCors("frontend");
+
 app.UseAuthentication();
 app.UseAuthorization();
 
-// MVC routes
-app.MapControllerRoute(
-  name: "default",
-  pattern: "{controller=Quiz}/{action=Index}/{id?}");
-
-app.MapRazorPages();
+app.MapControllers();
 
 await DbSeeder.SeedAsync(app.Services);
 
