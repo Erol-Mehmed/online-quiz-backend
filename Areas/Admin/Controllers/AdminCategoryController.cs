@@ -12,7 +12,7 @@ namespace OnlineQuiz.Api.Areas.Admin.Controllers;
 public class AdminCategoryController : Controller
 {
   private readonly ApplicationDbContext _context;
-  
+
   public AdminCategoryController(ApplicationDbContext context)
   {
     _context = context;
@@ -22,17 +22,17 @@ public class AdminCategoryController : Controller
   public async Task<IActionResult> Index()
   {
     var categories = await _context.Categories.ToListAsync();
-    
+
     return View(categories);
   }
-  
+
   // Create ----------------------------------------
   [HttpGet("create")]
   public IActionResult Create()
   {
     return View();
   }
-  
+
   [HttpPost("create")]
   [ValidateAntiForgeryToken]
   public async Task<IActionResult> Create(Category category)
@@ -45,7 +45,7 @@ public class AdminCategoryController : Controller
 
     return RedirectToAction(nameof(Index));
   }
-  
+
   // Edit ------------------------------------------
   [HttpGet("edit/{id}")]
   public async Task<IActionResult> Edit(int id)
