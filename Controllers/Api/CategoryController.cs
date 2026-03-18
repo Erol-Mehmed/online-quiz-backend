@@ -2,9 +2,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OnlineQuiz.Api.Data;
 
-namespace OnlineQuiz.Api.Controllers;
+namespace OnlineQuiz.Api.Controllers.Api;
 
-public class CategoryController : Controller
+public class CategoryController : ControllerBase
 {
   private readonly ApplicationDbContext _context;
   

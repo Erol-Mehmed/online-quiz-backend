@@ -6,7 +6,7 @@ namespace OnlineQuiz.Api.Areas.Admin.Controllers;
 
 [Area("Admin")]
 [Authorize(Roles = "Admin")]
-public class AdminController : Controller
+public class AdminController : ControllerBase
 {
   private readonly ApplicationDbContext _context;
   

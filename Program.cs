@@ -56,18 +56,26 @@ builder.Services.AddCors(options =>
     });
 });
 
+// Cookie
+builder.Services.ConfigureApplicationCookie(options =>
+{
+  options.Cookie.HttpOnly = true;
+  options.Cookie.SecurePolicy = CookieSecurePolicy.Always; // HTTPS only
+  options.Cookie.SameSite = SameSiteMode.None; // required for frontend-backend
+  options.LoginPath = "/auth/login";
+});
+
 builder.Services.AddControllers();
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
 {
-  app.UseExceptionHandler("/Home/Error");
   app.UseHsts();
 }
 
 app.UseHttpsRedirection();
-app.UseStaticFiles();
 
 app.UseRouting();
 

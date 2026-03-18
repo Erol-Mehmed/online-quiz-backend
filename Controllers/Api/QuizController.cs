@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OnlineQuiz.Api.Data;
 
-namespace OnlineQuiz.Api.Controllers;
+namespace OnlineQuiz.Api.Controllers.Api;
 
 [Authorize]
-public class QuizController : Controller
+public class QuizController : ControllerBase
 {
   private readonly ApplicationDbContext _context;
 
