@@ -13,4 +13,7 @@ Global
 		{E0FB3437-03D0-4624-BB2C-17A6286AB918}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E0FB3437-03D0-4624-BB2C-17A6286AB918}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
 EndGlobal

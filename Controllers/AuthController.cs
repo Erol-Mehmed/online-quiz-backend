@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using OnlineQuiz.Api.Models.DTOs.Auth;
@@ -9,8 +10,8 @@ namespace OnlineQuiz.Api.Controllers;
 [Route("auth")]
 public class AuthController : ControllerBase
 {
-  private readonly required UserManager<ApplicationUser> _userManager;
-  private readonly required SignInManager<ApplicationUser> _signInManager;
+  private readonly UserManager<ApplicationUser> _userManager;
+  private readonly SignInManager<ApplicationUser> _signInManager;
 
   public AuthController(
     UserManager<ApplicationUser> userManager,
@@ -40,7 +41,35 @@ public class AuthController : ControllerBase
   }
 
   [HttpPost("login")]
-  public async Task<IActionResult> Login(
+  public async Task<IActionResult> Login(LoginDto dto)
   {
+    var result = await _signInManager.PasswordSignInAsync(
+      dto.Email,
+      dto.Password,
+      isPersistent: false,
+      lockoutOnFailure: false
+    );
+
+    if (!result.Succeeded)
+      return Unauthorized("Invalid credentials");
+
+    return Ok(new { message = "Logged in" });
+  }
+
+  [Authorize]
+  [HttpGet("me")]
+  public IActionResult Me()
+  {
+    return Ok(new
+    {
+      email = User.Identity?.Name
+    });
+  }
+
+  [HttpPost("logout")]
+  public async Task<IActionResult> Logout()
+  {
+    await _signInManager.SignOutAsync();
+    return Ok(new { message = "Logged out" });
   }
 }

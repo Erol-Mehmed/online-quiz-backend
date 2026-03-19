@@ -18,10 +18,7 @@ string connectionString =
   $"Server={dbHost},{dbPort};Database={dbName};User Id={dbUser};Password={dbPassword};TrustServerCertificate=True;";
 
 // Routing
-builder.Services.AddRouting(options =>
-{
-  options.LowercaseUrls = true;
-});
+builder.Services.AddRouting(options => { options.LowercaseUrls = true; });
 
 // EF Core
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -74,8 +71,6 @@ if (!app.Environment.IsDevelopment())
 {
   app.UseHsts();
 }
-
-app.UseHttpsRedirection();
 
 app.UseRouting();
 
