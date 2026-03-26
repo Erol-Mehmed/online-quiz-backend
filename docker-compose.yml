@@ -11,11 +11,11 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:8080
-      - DB_HOST=sqlserver
-      - DB_PORT=1433
-      - DB_NAME=OnlineQuizDb
-      - DB_USER=sa
-      - DB_PASSWORD=YourStrong!Passw0rd
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
     volumes:
       - .:/app
     depends_on:
@@ -26,7 +26,7 @@ services:
     container_name: onlinequiz_db
     environment:
       - ACCEPT_EULA=Y
-      - MSSQL_SA_PASSWORD=YourStrong!Passw0rd
+      - MSSQL_SA_PASSWORD=${DB_PASSWORD}
     ports:
       - "1433:1433"
     volumes:
